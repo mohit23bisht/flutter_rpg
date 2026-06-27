@@ -22,7 +22,13 @@ mixin Stats {
     "_skill": _skill,
   };
 
-  
+  List<Map<String, String>> get statAsList => [
+    {"title": "health", "value": _health.toString()},
+    {"title": "attack", "value": _attack.toString()},
+    {"title": "defense", "value": _defense.toString()},
+    {"title": "skill", "value": _skill.toString()},
+  ];
+
   /// Increment the named stat by 1 if there are available points.
   /// Returns true if the increment succeeded, false otherwise.
   void incrementStat(String stat) {
