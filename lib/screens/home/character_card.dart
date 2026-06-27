@@ -20,7 +20,7 @@ class CharacterCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HeadlineText(character.name),
-                TitleText(character.vocation.title)
+                 TitleText(character.vocation.title)
 
               ],
             ),
