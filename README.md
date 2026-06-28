@@ -13,6 +13,8 @@ A new Flutter project.
 - List View
 - Card Widget
 - Icon Button
+
+## Data Models
 - Making a Character Class
 - Mixins
 - Getters
@@ -21,3 +23,7 @@ A new Flutter project.
 - Adding Images
 - Adding Dummy Data
 - Using the Character Class
+
+## User Input
+- Adding a Create Screen
+- Making a Text Field
