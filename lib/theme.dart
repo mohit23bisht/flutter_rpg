@@ -9,11 +9,9 @@ class AppColors {
   static Color textColor = Color.fromRGBO(150, 150, 150, 1);
   static Color highlightColor = Color.fromRGBO(212, 172, 13, 1);
   static Color successColor = Color.fromRGBO(9, 149, 110, 1);
-  
 }
 
 ThemeData appTheme = ThemeData(
-
   //seed color
   colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
 
@@ -32,10 +30,7 @@ ThemeData appTheme = ThemeData(
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),
-    bodyMedium: TextStyle(
-      color: AppColors.textColor,
-      fontSize: 16,     
-    ),
+    bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 16),
     headlineMedium: TextStyle(
       color: AppColors.titleColor,
       fontSize: 22,
@@ -50,5 +45,12 @@ ThemeData appTheme = ThemeData(
     shadowColor: Colors.transparent,
     margin: EdgeInsets.only(bottom: 15.0),
   ),
- 
+
+  // inputdecoration
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: AppColors.secondaryColor.withValues(alpha: 0.5),
+    border: InputBorder.none,
+    prefixIconColor: AppColors.textColor,
+  ),
 );
