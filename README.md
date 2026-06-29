@@ -27,3 +27,9 @@ A new Flutter project.
 ## User Input
 - Adding a Create Screen
 - Making a Text Field
+- Text Editing Controllers
+- Submit Handler Function
+- Displaying Vocations
+- Adding a Scrollable Widget
+- onTap Gesture
+- Selecting a Vocation
