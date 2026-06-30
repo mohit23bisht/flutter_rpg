@@ -33,3 +33,8 @@ A new Flutter project.
 - Adding a Scrollable Widget
 - onTap Gesture
 - Selecting a Vocation
+- Submitting the Data
+
+## Routes & Screens
+- Pushing & Popping Routes
+- Navigating Between Screens

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg_test/models/vocation.dart';
+import 'package:flutter_rpg_test/screens/create/vocation_card.dart';
 import 'package:flutter_rpg_test/shared/styled_button.dart';
 import 'package:flutter_rpg_test/shared/styled_text.dart';
 import 'package:flutter_rpg_test/theme.dart';
@@ -14,6 +16,14 @@ class Create extends StatefulWidget {
 class _CreateState extends State<Create> {
   final _nameTextEditController = TextEditingController();
   final _sloganTextEditController = TextEditingController();
+  Vocation _selectedVocation = Vocation.junkie;
+
+  void _updateVocation(Vocation vocation) {
+      print("Tapped: ${vocation.name}");
+    setState(() {
+      _selectedVocation = vocation;
+    });
+  }
 
   void handleSubmit() {
     if (_nameTextEditController.text.trim().isEmpty) {
@@ -39,47 +49,62 @@ class _CreateState extends State<Create> {
       appBar: AppBar(title: const HeadlineText('Character creation')),
       body: Container(
         padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Center(child: Icon(Icons.code, color: AppColors.primaryColor)),
-            Center(child: TitleText('Welcome , New Player')),
-            Center(
-              child: StyledText('Create a name and slogan for your character.'),
-            ),
-            SizedBox(height: 30),
-
-            TextField(
-              controller: _nameTextEditController,
-              cursorColor: AppColors.textColor,
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(child: Icon(Icons.code, color: AppColors.primaryColor)),
+              Center(child: TitleText('Welcome , New Player')),
+              Center(
+                child: StyledText(
+                  'Create a name and slogan for your character.',
+                ),
               ),
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                label: StyledText('Character name'),
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: _sloganTextEditController,
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium,
-              ),
-              cursorColor: AppColors.textColor,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.chat),
-                label: StyledText('Character slogan'),
-              ),
-            ),
+              SizedBox(height: 30),
 
-            SizedBox(height: 50),
+              TextField(
+                controller: _nameTextEditController,
+                cursorColor: AppColors.textColor,
+                style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium,
+                ),
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  label: StyledText('Character name'),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                controller: _sloganTextEditController,
+                style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium,
+                ),
+                cursorColor: AppColors.textColor,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.chat),
+                  label: StyledText('Character slogan'),
+                ),
+              ),
+              SizedBox(height: 20),
 
-            StyledButton(
-              onPressed: handleSubmit,
-              child: const HeadlineText('Create Character'),
+              Center(child: Icon(Icons.code, color: AppColors.primaryColor)),
+              Center(child: TitleText('Choose a vocation')),
+              Center(
+                child: StyledText('This determines your available skills.'),
+              ),
 
-            ),
-          ],
+              SizedBox(height: 30),
+
+              VocationCard(vocation: Vocation.junkie,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.junkie,),
+              VocationCard(vocation: Vocation.ninja,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.ninja),
+              VocationCard(vocation: Vocation.raider,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.raider),
+              VocationCard(vocation: Vocation.wizard,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.wizard),
+
+              StyledButton(
+                onPressed: handleSubmit,
+                child: const HeadlineText('Create Character'),
+              ),
+            ],
+          ),
         ),
       ),
     );

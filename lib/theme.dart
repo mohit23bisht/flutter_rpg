@@ -25,15 +25,16 @@ ThemeData appTheme = ThemeData(
 
   //text theme
   textTheme: TextTheme(
+
     titleLarge: TextStyle(
       color: AppColors.titleColor,
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
     ),
     bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 16),
     headlineMedium: TextStyle(
       color: AppColors.titleColor,
-      fontSize: 22,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
     ),
   ),

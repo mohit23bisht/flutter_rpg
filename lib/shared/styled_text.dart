@@ -3,11 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class StyledText extends StatelessWidget {
   const StyledText(this.text, {super.key});
-final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 2,
+      overflow: TextOverflow.visible,
       style: GoogleFonts.kanit(
         textStyle: Theme.of(context).textTheme.bodyMedium,
       ),
@@ -17,7 +19,7 @@ final String text;
 
 class HeadlineText extends StatelessWidget {
   const HeadlineText(this.text, {super.key});
-final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -31,7 +33,7 @@ final String text;
 
 class TitleText extends StatelessWidget {
   const TitleText(this.text, {super.key});
-final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Text(
