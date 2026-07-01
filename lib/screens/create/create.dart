@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg_test/models/character.dart';
 import 'package:flutter_rpg_test/models/vocation.dart';
 import 'package:flutter_rpg_test/screens/create/vocation_card.dart';
+import 'package:flutter_rpg_test/screens/home/home.dart';
 import 'package:flutter_rpg_test/shared/styled_button.dart';
 import 'package:flutter_rpg_test/shared/styled_text.dart';
 import 'package:flutter_rpg_test/theme.dart';
@@ -19,7 +21,7 @@ class _CreateState extends State<Create> {
   Vocation _selectedVocation = Vocation.junkie;
 
   void _updateVocation(Vocation vocation) {
-      print("Tapped: ${vocation.name}");
+    print("Tapped: ${vocation.name}");
     setState(() {
       _selectedVocation = vocation;
     });
@@ -28,12 +30,53 @@ class _CreateState extends State<Create> {
   void handleSubmit() {
     if (_nameTextEditController.text.trim().isEmpty) {
       print("name is empty");
+      showDialog(context: context, builder: (context) {
+        return AlertDialog(
+          title: const TitleText('Invalid Input'),
+          content: const StyledText('Please enter a name for your character.'),
+          actions: [
+            StyledButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const HeadlineText('OK'),
+            ),
+            
+          ],
+          actionsAlignment: MainAxisAlignment.center,
+        );
+      });
+      return;
     }
     if (_sloganTextEditController.text.trim().isEmpty) {
-      print("slogan is empty");
+       showDialog(context: context, builder: (context) {
+        return AlertDialog(
+          title: const TitleText('Invalid Input'),
+          content: const StyledText('Please enter a slogan for your character.'),
+          actions: [
+            StyledButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const HeadlineText('OK'),
+            ),
+            
+          ],
+          actionsAlignment: MainAxisAlignment.center,
+        );
+      });
+      return;
     }
-    print(_nameTextEditController.text);
-    print(_sloganTextEditController.text);
+
+    characters.add(
+      Character(
+        id: uuid.v4(),
+        name: _nameTextEditController.text.trim(),
+        slogan: _sloganTextEditController.text.trim(),
+        vocation: _selectedVocation,
+      ),
+    );
+    Navigator.push(context, MaterialPageRoute(builder: (ctx) => const Home()));
   }
 
   @override
@@ -94,10 +137,26 @@ class _CreateState extends State<Create> {
 
               SizedBox(height: 30),
 
-              VocationCard(vocation: Vocation.junkie,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.junkie,),
-              VocationCard(vocation: Vocation.ninja,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.ninja),
-              VocationCard(vocation: Vocation.raider,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.raider),
-              VocationCard(vocation: Vocation.wizard,onTap:_updateVocation,isSelected: _selectedVocation == Vocation.wizard),
+              VocationCard(
+                vocation: Vocation.junkie,
+                onTap: _updateVocation,
+                isSelected: _selectedVocation == Vocation.junkie,
+              ),
+              VocationCard(
+                vocation: Vocation.ninja,
+                onTap: _updateVocation,
+                isSelected: _selectedVocation == Vocation.ninja,
+              ),
+              VocationCard(
+                vocation: Vocation.raider,
+                onTap: _updateVocation,
+                isSelected: _selectedVocation == Vocation.raider,
+              ),
+              VocationCard(
+                vocation: Vocation.wizard,
+                onTap: _updateVocation,
+                isSelected: _selectedVocation == Vocation.wizard,
+              ),
 
               StyledButton(
                 onPressed: handleSubmit,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg_test/models/vocation.dart';
 import 'package:flutter_rpg_test/shared/styled_text.dart';
-import 'package:flutter_rpg_test/theme.dart';
+import 'package:uuid/uuid.dart';
 
+
+var uuid = const Uuid();
 class VocationCard extends StatelessWidget {
   const VocationCard({
     required this.isSelected,
@@ -28,7 +30,7 @@ class VocationCard extends StatelessWidget {
                 'assets/img/vocations/${vocation.image}',
                 width: 80,
                 colorBlendMode: BlendMode.color,
-                color: !isSelected ? AppColors.secondaryColor : Colors.transparent,
+                color: !isSelected ? Colors.black.withValues(alpha: 0.8) : Colors.transparent,
               ),
               SizedBox(width: 10),
               Expanded(

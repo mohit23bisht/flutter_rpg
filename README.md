@@ -38,3 +38,6 @@ A new Flutter project.
 ## Routes & Screens
 - Pushing & Popping Routes
 - Navigating Between Screens
+- Showing a Dialog
+- Adding a Dialog Theme
+- Navigating to a Profile Screen

@@ -54,4 +54,9 @@ ThemeData appTheme = ThemeData(
     border: InputBorder.none,
     prefixIconColor: AppColors.textColor,
   ),
+  dialogTheme: DialogThemeData(
+    backgroundColor: AppColors.secondaryAccent,
+    surfaceTintColor: Colors.transparent,
+    
+  )
 );
