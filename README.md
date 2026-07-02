@@ -41,3 +41,9 @@ A new Flutter project.
 - Showing a Dialog
 - Adding a Dialog Theme
 - Navigating to a Profile Screen
+- Passing Data into Routes
+- Fleshing Out the Profile Screen
+- Arguments in Stateful Widgets
+- Using Tables
+- Selecting an Active Skill- Outputting Vocation Skills
+- Adding a Snackbar
