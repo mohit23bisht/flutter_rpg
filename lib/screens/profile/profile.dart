@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg_test/models/character.dart';
+import 'package:flutter_rpg_test/screens/profile/stat_table.dart';
 import 'package:flutter_rpg_test/shared/styled_text.dart';
 import 'package:flutter_rpg_test/theme.dart';
 
@@ -65,52 +66,8 @@ class Profile extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Container(
-              color: AppColors.secondaryColor,
-              padding: const EdgeInsets.all(8.0),
-              width: double.infinity,
-              child: Row(
-                children: [
-                  Icon(Icons.star,color:character.points > 0 ? AppColors.highlightColor : AppColors.textColor),
-                  SizedBox(width: 10),
-
-                  StyledText('Stat points available'),
-                  Expanded(child: SizedBox(width: 10)),
-                  StyledText(character.points.toString()),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              child: Table(
-                children: [
-                  TableRow(
-                    children: [
-                      StyledText('Health'),
-                      StyledText(character.statAsMap['health'].toString()),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      StyledText('Attack'),
-                      StyledText(character.statAsMap['attack'].toString()),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      StyledText('Defense'),
-                      StyledText(character.statAsMap['defense'].toString()),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      StyledText('Skill'),
-                      StyledText(character.statAsMap['skill'].toString()),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            StatTable(character),
+            
           ],
         ),
       ),
