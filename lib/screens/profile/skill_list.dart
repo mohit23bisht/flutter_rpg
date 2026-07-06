@@ -14,12 +14,16 @@ class SkillList extends StatefulWidget {
 
 class _SkillListState extends State<SkillList> {
   late List<Skill> availableSkills;
+  late Skill selectedSkill;
 
   @override
   void initState() {
     availableSkills = allSkills
-      .where((skill) => skill.vocation == widget.character.vocation)
-      .toList();
+        .where((skill) => skill.vocation == widget.character.vocation)
+        .toList();
+    if (widget.character.skills.isEmpty) {
+      selectedSkill = availableSkills.first;
+    }
     // TODO: implement initState
     super.initState();
   }
@@ -33,17 +37,32 @@ class _SkillListState extends State<SkillList> {
         children: [
           Center(child: TitleText('Choose An Active Skill')),
           Center(child: StyledText("Skill are unique to your vocation.")),
-          // Add your skill list UI here
 
+          // Add your skill list UI here
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: availableSkills.map((skill) {
-              return Image.asset(
-                'assets/img/skills/${skill.image}',
-                width: 70,
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedSkill = skill;
+                  });
+                },
+                child: Image.asset(
+                  'assets/img/skills/${skill.image}',
+                  width: 70,
+                  colorBlendMode: BlendMode.color,
+                  color: !(selectedSkill == skill)
+                      ? Colors.black.withValues(alpha: 0.8)
+                      : Colors.transparent,
+                ),
               );
             }).toList(),
           ),
+          SizedBox(height: 5),
+
+          StyledText(selectedSkill.name),
+          SizedBox(height: 10),
         ],
       ),
     );

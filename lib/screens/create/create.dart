@@ -3,10 +3,12 @@ import 'package:flutter_rpg_test/models/character.dart';
 import 'package:flutter_rpg_test/models/vocation.dart';
 import 'package:flutter_rpg_test/screens/create/vocation_card.dart';
 import 'package:flutter_rpg_test/screens/home/home.dart';
+import 'package:flutter_rpg_test/services/character_store.dart';
 import 'package:flutter_rpg_test/shared/styled_button.dart';
 import 'package:flutter_rpg_test/shared/styled_text.dart';
 import 'package:flutter_rpg_test/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -30,52 +32,65 @@ class _CreateState extends State<Create> {
   void handleSubmit() {
     if (_nameTextEditController.text.trim().isEmpty) {
       print("name is empty");
-      showDialog(context: context, builder: (context) {
-        return AlertDialog(
-          title: const TitleText('Invalid Input'),
-          content: const StyledText('Please enter a name for your character.'),
-          actions: [
-            StyledButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const HeadlineText('OK'),
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const TitleText('Invalid Input'),
+            content: const StyledText(
+              'Please enter a name for your character.',
             ),
-            
-          ],
-          actionsAlignment: MainAxisAlignment.center,
-        );
-      });
+            actions: [
+              StyledButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const HeadlineText('OK'),
+              ),
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        },
+      );
       return;
     }
     if (_sloganTextEditController.text.trim().isEmpty) {
-       showDialog(context: context, builder: (context) {
-        return AlertDialog(
-          title: const TitleText('Invalid Input'),
-          content: const StyledText('Please enter a slogan for your character.'),
-          actions: [
-            StyledButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const HeadlineText('OK'),
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const TitleText('Invalid Input'),
+            content: const StyledText(
+              'Please enter a slogan for your character.',
             ),
-            
-          ],
-          actionsAlignment: MainAxisAlignment.center,
-        );
-      });
+            actions: [
+              StyledButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const HeadlineText('OK'),
+              ),
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        },
+      );
       return;
     }
 
-    characters.add(
+    Provider.of<CharacterStore>(context, listen: false).addCharacter(
       Character(
         id: uuid.v4(),
+
         name: _nameTextEditController.text.trim(),
+
         slogan: _sloganTextEditController.text.trim(),
+
         vocation: _selectedVocation,
       ),
     );
+
+   
     Navigator.push(context, MaterialPageRoute(builder: (ctx) => const Home()));
   }
 

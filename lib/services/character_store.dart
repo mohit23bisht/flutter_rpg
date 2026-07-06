@@ -31,4 +31,9 @@ class CharacterStore extends ChangeNotifier {
   ];
 
   List<Character> get characters => _characters;
+
+  void addCharacter(Character character) {
+    _characters.add(character);
+    notifyListeners();
+  }
 }
