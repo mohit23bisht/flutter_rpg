@@ -45,5 +45,6 @@ A new Flutter project.
 - Fleshing Out the Profile Screen
 - Arguments in Stateful Widgets
 - Using Tables
-- Selecting an Active Skill- Outputting Vocation Skills
+- Selecting an Active Skill
+- Outputting Vocation Skills
 - Adding a Snackbar
