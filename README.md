@@ -48,3 +48,23 @@ A new Flutter project.
 - Selecting an Active Skill
 - Outputting Vocation Skills
 - Adding a Snackbar
+
+## Using Global State
+
+- Provider Package 
+- Making a Character Store 
+- Providing & Consuming State
+- Adding New Characters 
+
+## Adding a (Firestore) Database
+- Firebase SDK Setup 
+- Firestore Database Setup 
+- Factory Contructors 
+- Processing Character Data 
+- Character Factory Constructor
+- Processing Character Stats
+- Firestore Converters 
+- Adding Firestore Data
+- Fetching Character Data
+- Saving Character Changes
+- Deleting Character Data
