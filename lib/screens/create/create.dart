@@ -90,8 +90,8 @@ class _CreateState extends State<Create> {
       ),
     );
 
+    Navigator.pop(context);
    
-    Navigator.push(context, MaterialPageRoute(builder: (ctx) => const Home()));
   }
 
   @override

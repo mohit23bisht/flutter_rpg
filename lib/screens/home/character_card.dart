@@ -16,9 +16,13 @@ class CharacterCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            Image.asset(
-              'assets/img/vocations/${character.vocation.image}',
-              width: 80,
+            Hero(
+              key: ValueKey(character.id),
+              tag: character.id,
+              child: Image.asset(
+                'assets/img/vocations/${character.vocation.image}',
+                width: 80,
+              ),
             ),
             SizedBox(width: 10),
             Column(

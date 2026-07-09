@@ -4,6 +4,7 @@ import 'package:flutter_rpg/screens/home/character_card.dart';
 import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart' hide Create;
 
 class Home extends StatefulWidget {
@@ -14,6 +15,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    Provider.of<CharacterStore>(context, listen: false).fetchCharactersOnce();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +38,30 @@ class _HomeState extends State<Home> {
                     itemCount: value.characters.length,
 
                     itemBuilder: (context, index) {
-                      return CharacterCard(value.characters[index]);
+                      return Slidable(
+                        key: Key(value.characters[index].id),
+                        endActionPane: ActionPane(
+                          motion: const DrawerMotion(),
+
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {
+                                Provider.of<CharacterStore>(context, listen: false)
+                                    .removeCharacter(value.characters[index]);
+                              },
+
+                              backgroundColor: Colors.red,
+
+                              foregroundColor: Colors.white,
+
+                              icon: Icons.delete,
+
+                              label: 'Delete',
+                            ),
+                          ],
+                        ),
+                        child: CharacterCard(value.characters[index]),
+                      );
                     },
                   );
                 },
