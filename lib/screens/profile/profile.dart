@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg_test/models/character.dart';
-import 'package:flutter_rpg_test/screens/profile/skill_list.dart';
-import 'package:flutter_rpg_test/screens/profile/stat_table.dart';
-import 'package:flutter_rpg_test/shared/styled_text.dart';
-import 'package:flutter_rpg_test/theme.dart';
+import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/profile/skill_list.dart';
+import 'package:flutter_rpg/screens/profile/stat_table.dart';
+import 'package:flutter_rpg/shared/styled_text.dart';
+import 'package:flutter_rpg/theme.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key, required this.character});

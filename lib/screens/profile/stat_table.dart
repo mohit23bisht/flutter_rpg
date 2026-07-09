@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg_test/models/character.dart';
-import 'package:flutter_rpg_test/shared/styled_text.dart';
-import 'package:flutter_rpg_test/theme.dart';
+import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/shared/styled_text.dart';
+import 'package:flutter_rpg/theme.dart';
 
 class StatTable extends StatefulWidget {
   const StatTable(this.character, {super.key});

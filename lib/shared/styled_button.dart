@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg_test/theme.dart';
+import 'package:flutter_rpg/theme.dart';
 
 class StyledButton extends StatelessWidget {
   const StyledButton({super.key,required this.child, required this.onPressed});

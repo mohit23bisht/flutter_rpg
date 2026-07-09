@@ -1,4 +1,4 @@
-package com.example.flutter_rpg_test
+package com.example.flutter_rpg
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg_test/models/vocation.dart';
-import 'package:flutter_rpg_test/shared/styled_text.dart';
+import 'package:flutter_rpg/models/vocation.dart';
+import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:uuid/uuid.dart';
 
 

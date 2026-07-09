@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg_test/models/character.dart';
-import 'package:flutter_rpg_test/screens/create/create.dart';
-import 'package:flutter_rpg_test/screens/home/character_card.dart';
-import 'package:flutter_rpg_test/services/character_store.dart';
-import 'package:flutter_rpg_test/shared/styled_button.dart';
-import 'package:flutter_rpg_test/shared/styled_text.dart';
+import 'package:flutter_rpg/screens/create/create.dart';
+import 'package:flutter_rpg/screens/home/character_card.dart';
+import 'package:flutter_rpg/services/character_store.dart';
+import 'package:flutter_rpg/shared/styled_button.dart';
+import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:provider/provider.dart' hide Create;
 
 class Home extends StatefulWidget {
