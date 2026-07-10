@@ -23,6 +23,10 @@ class _SkillListState extends State<SkillList> {
         .toList();
     if (widget.character.skills.isEmpty) {
       selectedSkill = availableSkills.first;
+
+      widget.character.toggleSkill(selectedSkill);
+    } else {
+      selectedSkill = widget.character.skills.first;
     }
     // TODO: implement initState
     super.initState();
@@ -45,14 +49,15 @@ class _SkillListState extends State<SkillList> {
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    selectedSkill = skill;
+                    //selectedSkill = skill;
+                    widget.character.toggleSkill(skill);
                   });
                 },
                 child: Image.asset(
                   'assets/img/skills/${skill.image}',
                   width: 70,
                   colorBlendMode: BlendMode.color,
-                  color: !(selectedSkill == skill)
+                  color: !(widget.character.skills.contains(skill) )
                       ? Colors.black.withValues(alpha: 0.8)
                       : Colors.transparent,
                 ),

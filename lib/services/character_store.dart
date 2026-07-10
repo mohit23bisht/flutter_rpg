@@ -7,7 +7,7 @@ class CharacterStore extends ChangeNotifier {
 
   List<Character> get characters => _characters;
 
-// add a new character
+  // add a new character
   void addCharacter(Character character) {
     FirestoreService.addCharacter(character);
     _characters.add(character);
@@ -36,7 +36,14 @@ class CharacterStore extends ChangeNotifier {
   //save(update) character
   Future<void> saveCharacter(Character character) async {
     await FirestoreService.updateCharacter(character);
-   // final index = _characters.indexWhere((c) => c.id == character.id);
+    // final index = _characters.indexWhere((c) => c.id == character.id);
     return;
+  }
+
+  bool characterExists(String name) {
+    return characters.any(
+      (character) =>
+          character.name.trim().toLowerCase() == name.trim().toLowerCase(),
+    );
   }
 }

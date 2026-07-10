@@ -27,6 +27,19 @@ class Character with Stats {
     skills.clear();
     skills.add(skill);
   }
+  void toggleSkill(Skill skill) {
+
+  if (skills.contains(skill)) {
+
+    skills.remove(skill);
+
+  } else {
+
+    skills.add(skill);
+
+  }
+
+}
 
   Character({
     required this.id,

@@ -6,15 +6,18 @@ import 'package:flutter_rpg/services/character_store.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:provider/provider.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     ChangeNotifierProvider(
-    
       create: (_) => CharacterStore(),
 
-      child: MaterialApp(theme: appTheme, home: const Home()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: appTheme,
+        home: const Home(),
+      ),
     ),
   );
 }

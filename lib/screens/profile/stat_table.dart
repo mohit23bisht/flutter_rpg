@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
@@ -12,6 +14,7 @@ class StatTable extends StatefulWidget {
 }
 
 class _StatTableState extends State<StatTable> {
+  double turns = 0.0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,11 +25,15 @@ class _StatTableState extends State<StatTable> {
           width: double.infinity,
           child: Row(
             children: [
-              Icon(
-                Icons.star,
-                color: widget.character.points > 0
-                    ? AppColors.highlightColor
-                    : AppColors.textColor,
+              AnimatedRotation(
+                turns: turns,
+                duration: Duration(milliseconds: 200),
+                child: Icon(
+                  Icons.star,
+                  color: widget.character.points > 0
+                      ? AppColors.highlightColor
+                      : AppColors.textColor,
+                ),
               ),
               SizedBox(width: 10),
 
@@ -44,9 +51,7 @@ class _StatTableState extends State<StatTable> {
           child: Table(
             children: widget.character.statAsList.map((stat) {
               return TableRow(
-                decoration: BoxDecoration(
-                  color: AppColors.secondaryColor,
-                ),
+                decoration: BoxDecoration(color: AppColors.secondaryColor),
                 children: [
                   TableCell(
                     verticalAlignment: TableCellVerticalAlignment.middle,
@@ -57,7 +62,7 @@ class _StatTableState extends State<StatTable> {
                   ),
                   TableCell(
                     verticalAlignment: TableCellVerticalAlignment.middle,
-          
+
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: StyledText(stat['value']!),
@@ -65,7 +70,7 @@ class _StatTableState extends State<StatTable> {
                   ),
                   TableCell(
                     verticalAlignment: TableCellVerticalAlignment.middle,
-          
+
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: IconButton(
@@ -76,6 +81,7 @@ class _StatTableState extends State<StatTable> {
                         onPressed: () {
                           setState(() {
                             if (widget.character.points > 0) {
+                              turns += 0.25;
                               widget.character.incrementStat(stat['title']!);
                             }
                           });
@@ -85,7 +91,7 @@ class _StatTableState extends State<StatTable> {
                   ),
                   TableCell(
                     verticalAlignment: TableCellVerticalAlignment.middle,
-          
+
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: IconButton(
@@ -94,8 +100,9 @@ class _StatTableState extends State<StatTable> {
                           color: AppColors.textColor,
                         ),
                         onPressed: () {
-                           setState(() {
+                          setState(() {
                             if (widget.character.points >= 0) {
+                              turns -= 0.25;
                               widget.character.decrementStat(stat['title']!);
                             }
                           });

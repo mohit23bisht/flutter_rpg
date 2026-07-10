@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/character.dart';
+import 'package:flutter_rpg/screens/profile/heart.dart';
 import 'package:flutter_rpg/screens/profile/skill_list.dart';
 import 'package:flutter_rpg/screens/profile/stat_table.dart';
 import 'package:flutter_rpg/services/character_store.dart';
@@ -23,31 +24,36 @@ class Profile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                color: AppColors.secondaryColor,
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Hero(
-                      key: ValueKey(character.id),
-                      tag: character.id,
-                      child: Image.asset(
-                        'assets/img/vocations/${character.vocation.image}',
-                        width: 80,
-                      ),
+              Stack(
+                children: [
+                  Container(
+                    color: AppColors.secondaryColor,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Hero(
+                          key: ValueKey(character.id),
+                          tag: character.id,
+                          child: Image.asset(
+                            'assets/img/vocations/${character.vocation.image}',
+                            width: 80,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TitleText(character.vocation.title),
+                              StyledText(character.vocation.description),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TitleText(character.vocation.title),
-                          StyledText(character.vocation.description),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                 Heart(character),
+                ],
               ),
               SizedBox(height: 20),
 

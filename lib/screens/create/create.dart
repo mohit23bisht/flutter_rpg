@@ -78,6 +78,34 @@ class _CreateState extends State<Create> {
       return;
     }
 
+    final characterStore = Provider.of<CharacterStore>(context, listen: false);
+
+    if (characterStore.characterExists(_nameTextEditController.text)) {
+      showDialog(
+        context: context,
+
+        builder: (_) => AlertDialog(
+          title: const TitleText('Duplicate Name'),
+
+          content: const StyledText(
+            'A character with this name already exists. Please choose another name.',
+          ),
+
+          actions: [
+            StyledButton(
+              onPressed: () => Navigator.pop(context),
+
+              child: const HeadlineText('OK'),
+            ),
+          ],
+
+          actionsAlignment: MainAxisAlignment.center,
+        ),
+      );
+
+      return;
+    }
+
     Provider.of<CharacterStore>(context, listen: false).addCharacter(
       Character(
         id: uuid.v4(),
@@ -91,7 +119,6 @@ class _CreateState extends State<Create> {
     );
 
     Navigator.pop(context);
-   
   }
 
   @override
