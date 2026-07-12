@@ -1,6 +1,3 @@
-# flutter_rpg_test
-
-A new Flutter project.
 
 ## Getting Started
 ## Layout, UI & Theming
@@ -68,3 +65,10 @@ A new Flutter project.
 - Fetching Character Data
 - Saving Character Changes
 - Deleting Character Data
+## Adding Animations
+- Hero Widget
+- Animated Rotation
+- Animation Controllers
+- Tween Sequences
+- Animated Builder Widget
+- Stack and Positioned Widgets
